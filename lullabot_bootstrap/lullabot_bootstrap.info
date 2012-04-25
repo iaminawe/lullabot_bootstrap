@@ -1,0 +1,28 @@
+name = Lullabot Bootstrap
+description = ..
+version = 1.0
+core = 7.x
+base theme = twitter_bootstrap
+
+
+
+regions[header]         = 'Header'
+regions[hero]           = 'Hero'
+;regions[highlighted]    = 'Highlighted'
+;regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[content_bottom] = 'Content Bottom'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+regions[footer_menu]    = 'Footer Menu'
+
+
+
+stylesheets[all][] = bootstrap/css/bootstrap.css
+stylesheets[all][] = bootstrap/css/bootstrap-responsive.css
+stylesheets[all][] = css/style.css
+
+scripts[] = bootstrap/js/bootstrap.js
+scripts[] = js/script.js
+
