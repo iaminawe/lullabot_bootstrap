@@ -1,15 +1,8 @@
 (function($){
-
-    Drupal.behaviors.lullabot_bootstrap = {
-        attach: function (context) {
-
+  Drupal.behaviors.lullabot_bootstrap = {
+    attach: function (context) {
 
 
-
-
-
-
-        }
-    };
-
+    }
+  };
 })(jQuery);

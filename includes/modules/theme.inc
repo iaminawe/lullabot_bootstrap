@@ -226,3 +226,19 @@ function lullabot_bootstrap_preprocess_table(&$variables) {
   $variables['attributes']['class'][] = 'table';
   $variables['attributes']['class'][] = 'table-striped';
 }
+
+
+/**
+ * Implements theme_progress_bar().
+ *
+ * Use the Bootstrap progress bar component.
+ */
+function lullabot_bootstrap_progress_bar($variables) {
+  $variables['attributes']['class'][] = 'progress';
+  $variables['attributes']['class'][] = 'progress-striped';
+
+  return "<div". drupal_attributes($variables['attributes']) .">
+  <div class=\"bar\"
+       style=\"width: ". $variables['percent'] ."%;\"></div>
+  </div>";
+}

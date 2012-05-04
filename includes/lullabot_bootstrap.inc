@@ -84,14 +84,3 @@ function lullabot_bootstrap_lullabot_bootstrap_btn_dropdown($variables) {
   return $output;
 }  
 
-/**
- * theme_lullabot_bootstrap_progress_bar
- */
-function lullabot_bootstrap_lullabot_bootstrap_progress_bar($variables) {
-  $variables['attributes']['class'][] = 'progress';
-  
-  return "<div". drupal_attributes($variables['attributes']) .">
-  <div class=\"bar\"
-       style=\"width: ". $variables['percent'] ."%;\"></div>
-  </div>";
-}
