@@ -76,7 +76,7 @@
 <header id="navbar" role="banner" class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content, in mobile/narrow layouts -->
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
