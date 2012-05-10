@@ -12,8 +12,8 @@ body.toolbar-drawer .navbar-fixed-top {
 }
 
 @media(min-width: 980px) {
-  body.toolbar { padding-top: 90px !important; }
-  body.toolbar-drawer { padding-top: 125px !important; }
+  body.toolbar { padding-top: 30px !important; }
+  body.toolbar-drawer { padding-top: 65px !important; }
 }
 
 html.overlay-open .navbar-fixed-top {
