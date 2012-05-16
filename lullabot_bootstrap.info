@@ -14,6 +14,7 @@ stylesheets[all][] = bootstrap/css/bootstrap.css
 stylesheets[all][] = bootstrap/css/bootstrap-responsive.css
 stylesheets[all][] = css/lullabot_bootstrap.css
 
+scripts[] = js/modernizr.js
 scripts[] = bootstrap/js/bootstrap.js
 scripts[] = js/script.js
 
