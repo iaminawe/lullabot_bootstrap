@@ -149,18 +149,6 @@ function lullabot_bootstrap_preprocess_page(&$variables) {
 }
 
 
-
-/**
- * Preprocess variables for region.tpl.php
- *
- * @see region.tpl.php
- */
-function lullabot_bootstrap_preprocess_region(&$variables, $hook) {
-  // Me likes
-  if ($variables['region'] == "sidebar_first")
-    $variables['classes_array'][] = 'well';
-}
-
 /**
  * Returns the correct span class for a region
  */
