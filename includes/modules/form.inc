@@ -184,20 +184,3 @@ function lullabot_bootstrap_preprocess_button(&$vars) {
     }
   }
 }
-
-/**
- * Returns HTML for a button form element.
- */
-function lullabot_bootstrap_button($variables) {
-  $element = $variables['element'];
-  $label = check_plain($element['#value']);
-  element_set_attributes($element, array('id', 'name', 'value'));
-
-  $element['#attributes']['class'][] = 'form-' . $element['#button_type'];
-  if (!empty($element['#attributes']['disabled'])) {
-    $element['#attributes']['class'][] = 'form-button-disabled';
-  }
-
-  return '<button' . drupal_attributes($element['#attributes']) . '>' . $label . '</button>
-  '; // This line break adds inherent margin between multiple buttons
-}
