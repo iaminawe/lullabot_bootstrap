@@ -1,13 +1,16 @@
 <?php
 
 /**
- * Returns HTML for primary and secondary local tasks.
+ * Overrides theme_menu_local_tasks().
+ * Change classes used by <ul> elements.
  */
 function lullabot_bootstrap_menu_local_tasks(&$vars) {
   $output = '';
 
   if (!empty($vars['primary']) ) {
-    $vars['primary']['#prefix'] = '<ul class="nav nav-tabs">';
+    // Include invisible label for non-visual users.
+    $vars['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+    $vars['primary']['#prefix'] .= '<ul class="nav nav-tabs">';
     $vars['primary']['#suffix'] = '</ul>';
     $output .= drupal_render($vars['primary']);
   }
@@ -23,7 +26,10 @@ function lullabot_bootstrap_menu_local_tasks(&$vars) {
 
 
 /**
- * Returns HTML for primary and secondary local tasks.
+ * Overrides theme_menu_local_task().
+ *
+ * Returns HTML for primary and secondary local tasks. In addition to what the
+ * core does, this function includes the child tasks.
  *
  * @ingroup themeable
  */
@@ -64,16 +70,22 @@ function lullabot_bootstrap_menu_local_task($variables) {
   }
 }
 
+/**
+ * Overrides theme_menu_tree().
+ * Includes the nav class on the menu <ul>
+ */
 function lullabot_bootstrap_menu_tree(&$variables) {
   return '<ul class="menu nav">' . $variables['tree'] . '</ul>';
 }
 
+/**
+ * Overrides theme_menu_link().
+ *
+ * Prints sub-items with the menu link.
+ */
 function lullabot_bootstrap_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
-  
-  // Sanitize title
-  $element['#title'] = check_plain($element['#title']);
   
   if ($element['#below']) {
     // Add our own wrapper
@@ -91,6 +103,8 @@ function lullabot_bootstrap_menu_link(array $variables) {
 
 /**
  * Get all primary tasks including subsets
+ * @todo: phase this out. It doesn't check if the item is active and shouldn't
+ * be doing its own query in the theme layer.
  */
 function _lullabot_bootstrap_local_tasks($tabs = FALSE) {
   if ($tabs == '') {

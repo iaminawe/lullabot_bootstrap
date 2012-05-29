@@ -2,6 +2,8 @@
 
 /**
  * Implements hook_form_alter().
+ *
+ * Removes the wrapper around most forms.
  */
 function lullabot_bootstrap_form_alter(&$form, &$form_state, $form_id) {
   // Id's of forms that should be ignored
@@ -16,10 +18,12 @@ function lullabot_bootstrap_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['#form_id']) && !in_array($form['#form_id'], $form_ids) && !isset($form['#node_edit_form'])) {
     $form['actions']['#theme_wrappers'] = array();
   }
-}  
+}
 
 /**
- * Returns HTML for a form element.
+ * Override theme_form_element().
+ * Removes some of the wrapper containers and adds the control classes used by
+ * Bootstrap.
  */
 function lullabot_bootstrap_form_element(&$variables) {
   $element = &$variables['element'];
@@ -96,7 +100,9 @@ function lullabot_bootstrap_form_element(&$variables) {
 }
 
 /**
- * Returns HTML for a form element label and required marker.
+ * Override theme_form_element_label().
+ * Adds the control-label class used by Bootstrap, and build the label content a
+ * bit differently.
  */
 function lullabot_bootstrap_form_element_label(&$variables) {
   $element = $variables['element'];
@@ -146,6 +152,7 @@ function lullabot_bootstrap_form_element_label(&$variables) {
 
 /**
  * Preprocessor for theme('button').
+ * Add the btn class, and optionally add another class based on the button type.
  */
 function lullabot_bootstrap_preprocess_button(&$vars) {
   $vars['element']['#attributes']['class'][] = 'btn';

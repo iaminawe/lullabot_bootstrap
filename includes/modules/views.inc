@@ -6,12 +6,17 @@
  */
 
 /**
- * Display a view as a table style.
+ * Implements template_preprocess_views_view_table().
+ * Add a class to table displays of views.
  */
 function lullabot_bootstrap_preprocess_views_view_table(&$vars) {
   $vars['classes_array'][] = 'table';
 }
 
+/**
+ * Implements template_preprocess_views_view_grid().
+ * Add a table class to grid displays of views.
+ */
 function lullabot_bootstrap_preprocess_views_view_grid(&$vars) {
   $vars['class'] .= ' table';
 }

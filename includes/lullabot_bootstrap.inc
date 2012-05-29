@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Returns navigational links based on a menu tree
  */
@@ -83,4 +81,3 @@ function lullabot_bootstrap_lullabot_bootstrap_btn_dropdown($variables) {
   
   return $output;
 }  
-

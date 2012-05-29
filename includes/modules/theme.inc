@@ -28,6 +28,9 @@ function lullabot_bootstrap_status_messages($variables) {
 
   foreach (drupal_get_messages($display) as $type => $messages) {
     $output .= '<div class="alert alert-block ' . $alert_classes[$type] . '">';
+    if (!empty($status_heading[$type])) {
+      $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
+    }
     if (count($messages) > 1) {
       $output .= " <ul>\n";
       foreach ($messages as $message) {
@@ -112,13 +115,15 @@ function lullabot_bootstrap_theme_get_info($setting_name, $theme = NULL) {
 
 
 /**
- * Returns HTML for a set of links.
+ * Overrides theme_links().
+ * Returns HTML for a set of links. Does a lot of tweaking around classes that
+ * the core implementation does not, and displays child menu links in a
+ * dropdown.
  */
 function lullabot_bootstrap_lullabot_bootstrap_links($variables) {
   $links = $variables['links'];
   $attributes = $variables['attributes'];
   $heading = $variables['heading'];
-  //$dropdown = $variables['dropdown'];
 
   global $language_url;
   $output = '';
@@ -222,6 +227,10 @@ function lullabot_bootstrap_lullabot_bootstrap_links($variables) {
   return $output;
 }
 
+/**
+ * Implements theme_preprocess_table().
+ * Adds classes to the <table> to use Bootstrap styling.
+ */
 function lullabot_bootstrap_preprocess_table(&$variables) {
   $variables['attributes']['class'][] = 'table';
   $variables['attributes']['class'][] = 'table-striped';
@@ -229,7 +238,7 @@ function lullabot_bootstrap_preprocess_table(&$variables) {
 
 
 /**
- * Implements theme_progress_bar().
+ * Overrides theme_progress_bar().
  *
  * Use the Bootstrap progress bar component.
  */

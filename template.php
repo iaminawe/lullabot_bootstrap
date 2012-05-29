@@ -29,12 +29,17 @@ function lullabot_bootstrap_theme() {
  * @see html.tpl.php
  */
 function lullabot_bootstrap_preprocess_html(&$variables) {
-   // Try to load the library
+   // Try to load the library, if the twitter_bootstrap_ui module is in use.
   if (module_exists('twitter_bootstrap_ui')) {
     $library = libraries_load('twitter_bootstrap', 'minified');
   }  
 }
 
+/**
+ * Override theme_breadrumb().
+ *
+ * Print breadcrumbs as a list, with separators.
+ */
 function lullabot_bootstrap_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
 
@@ -62,8 +67,9 @@ function lullabot_bootstrap_breadcrumb($variables) {
  * @see node.tpl.php
  */
 function lullabot_bootstrap_preprocess_node(&$variables) {
-  if ($variables['teaser'])
+  if ($variables['teaser']) {
     $variables['classes_array'][] = 'row-fluid';
+  }
 }
 
 /**
